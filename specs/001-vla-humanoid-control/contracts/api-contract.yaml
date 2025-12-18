@@ -1,0 +1,192 @@
+# API Contract: VLA Humanoid Control System
+
+## Overview
+This contract defines the API endpoints for the Vision Language Action (VLA) humanoid control system. The API allows users to send voice commands to a humanoid robot and receive status updates on command execution.
+
+## Base URL
+`http://robot-control-api:8080/api/v1`
+
+## Authentication
+All endpoints require API key authentication in the header:
+`Authorization: Bearer <api_key>`
+
+## Endpoints
+
+### 1. Submit Voice Command
+- **Endpoint**: `POST /commands/voice`
+- **Description**: Submit a voice command to be processed by the system
+- **Request**:
+  ```json
+  {
+    "audio_data": "base64_encoded_audio",
+    "robot_id": "string",
+    "user_id": "string"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "command_id": "string",
+    "status": "received",
+    "timestamp": "ISO 8601 datetime"
+  }
+  ```
+
+### 2. Submit Text Command
+- **Endpoint**: `POST /commands/text`
+- **Description**: Submit a text-based command directly
+- **Request**:
+  ```json
+  {
+    "text": "string",
+    "robot_id": "string",
+    "user_id": "string"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "command_id": "string",
+    "status": "received",
+    "timestamp": "ISO 8601 datetime"
+  }
+  ```
+
+### 3. Get Command Status
+- **Endpoint**: `GET /commands/{command_id}`
+- **Description**: Get the current status of a specific command
+- **Path Parameters**:
+  - `command_id`: The ID of the command to query
+- **Response**:
+  ```json
+  {
+    "command_id": "string",
+    "status": "pending|executing|completed|failed",
+    "result": "object (varies by command)",
+    "timestamp": "ISO 8601 datetime",
+    "progress": {
+      "current_step": "string",
+      "total_steps": "integer",
+      "percentage": "number"
+    }
+  }
+  ```
+
+### 4. Get Robot State
+- **Endpoint**: `GET /robots/{robot_id}/state`
+- **Description**: Get the current state of a specific robot
+- **Path Parameters**:
+  - `robot_id`: The ID of the robot to query
+- **Response**:
+  ```json
+  {
+    "robot_id": "string",
+    "position": {
+      "x": "number",
+      "y": "number",
+      "z": "number"
+    },
+    "orientation": {
+      "x": "number",
+      "y": "number",
+      "z": "number",
+      "w": "number"
+    },
+    "gripper_status": "open|closed|holding_object",
+    "battery_level": "number (0-100)",
+    "timestamp": "ISO 8601 datetime"
+  }
+  ```
+
+### 5. Get Environmental Map
+- **Endpoint**: `GET /robots/{robot_id}/environment`
+- **Description**: Get the latest environmental map for a specific robot
+- **Path Parameters**:
+  - `robot_id`: The ID of the robot
+- **Response**:
+  ```json
+  {
+    "robot_id": "string",
+    "map_id": "string",
+    "obstacles": [
+      {
+        "id": "string",
+        "position": {
+          "x": "number",
+          "y": "number",
+          "z": "number"
+        },
+        "shape": "box|sphere|cylinder",
+        "dimensions": {
+          "x": "number",
+          "y": "number",
+          "z": "number"
+        }
+      }
+    ],
+    "objects": [
+      {
+        "id": "string",
+        "type": "string",
+        "position": {
+          "x": "number",
+          "y": "number",
+          "z": "number"
+        },
+        "confidence": "number (0-1)"
+      }
+    ],
+    "timestamp": "ISO 8601 datetime"
+  }
+  ```
+
+### 6. Cancel Command
+- **Endpoint**: `DELETE /commands/{command_id}`
+- **Description**: Cancel a command that is currently pending or executing
+- **Path Parameters**:
+  - `command_id`: The ID of the command to cancel
+- **Response**:
+  ```json
+  {
+    "command_id": "string",
+    "status": "canceled",
+    "timestamp": "ISO 8601 datetime"
+  }
+  ```
+
+## Error Responses
+All error responses follow this format:
+```json
+{
+  "error": {
+    "code": "string",
+    "message": "string",
+    "details": "object (optional)"
+  }
+}
+```
+
+### Common Error Codes:
+- `INVALID_REQUEST`: Request format is invalid
+- `AUTHENTICATION_FAILED`: Authentication credentials are invalid
+- `RESOURCE_NOT_FOUND`: Requested resource does not exist
+- `ROBOT_UNAVAILABLE`: Target robot is unavailable
+- `COMMAND_FAILED`: Command execution failed
+- `PERMISSION_DENIED`: Insufficient permissions for the action
+
+## Webhook Events
+The system will send webhook notifications to registered endpoints for important events:
+
+- `command_status_updated`: When a command's status changes
+- `robot_state_changed`: When a robot's state changes significantly
+- `environment_updated`: When the environmental map is updated
+- `error_occurred`: When an error occurs
+
+### Webhook Request Format:
+```json
+{
+  "event_type": "string",
+  "timestamp": "ISO 8601 datetime",
+  "data": "object (varies by event type)"
+}
+```

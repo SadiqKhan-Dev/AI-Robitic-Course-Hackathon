@@ -1,0 +1,143 @@
+# API Contract: Docusaurus Documentation Site
+
+## Overview
+This contract defines any API interactions for the Docusaurus-based AI/Robotics book documentation site. While primarily a static site, there may be interactions with search services and potential backend integrations.
+
+## Base URL
+`https://api.your-documentation-site.com/api/v1` (or same domain for same-origin requests)
+
+## Search API Endpoint
+
+### 1. Search Content
+- **Endpoint**: `GET /search`
+- **Description**: Search across all documentation content
+- **Query Parameters**:
+  - `q`: Search query string (required)
+  - `limit`: Maximum number of results to return (optional, default: 10)
+  - `offset`: Number of results to skip (optional, default: 0)
+  - `module`: Filter results by module (optional)
+- **Response**:
+  ```json
+  {
+    "query": "string",
+    "totalResults": "integer",
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "contentPreview": "string",
+        "url": "string",
+        "module": "string",
+        "relevance": "number (0-1)"
+      }
+    ],
+    "facets": {
+      "modules": [
+        {
+          "name": "string",
+          "count": "integer"
+        }
+      ]
+    }
+  }
+  ```
+
+## Content Metadata API (for dynamic features)
+
+### 2. Get Content Metadata
+- **Endpoint**: `GET /content/metadata`
+- **Description**: Retrieve metadata about documentation content
+- **Response**:
+  ```json
+  {
+    "modules": [
+      {
+        "id": "string",
+        "title": "string",
+        "slug": "string",
+        "description": "string",
+        "chapterCount": "integer",
+        "lastUpdated": "ISO 8601 datetime"
+      }
+    ],
+    "chapters": [
+      {
+        "id": "string",
+        "title": "string",
+        "slug": "string",
+        "module": "string",
+        "position": "integer",
+        "lastUpdated": "ISO 8601 datetime"
+      }
+    ]
+  }
+  ```
+
+## User Preference API
+
+### 3. Save User Preferences
+- **Endpoint**: `POST /preferences`
+- **Description**: Save user interface preferences (theme, font size, etc.)
+- **Request**:
+  ```json
+  {
+    "theme": "light|dark",
+    "fontSize": "small|normal|large",
+    "bookmarks": ["chapter-id-1", "chapter-id-2"]
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "status": "saved",
+    "timestamp": "ISO 8601 datetime"
+  }
+  ```
+
+### 4. Get User Preferences
+- **Endpoint**: `GET /preferences`
+- **Description**: Retrieve user interface preferences
+- **Response**:
+  ```json
+  {
+    "theme": "light|dark",
+    "fontSize": "small|normal|large",
+    "bookmarks": ["chapter-id-1", "chapter-id-2"],
+    "lastUpdated": "ISO 8601 datetime"
+  }
+  ```
+
+## Error Responses
+All error responses follow this format:
+```json
+{
+  "error": {
+    "code": "string",
+    "message": "string",
+    "details": "object (optional)"
+  }
+}
+```
+
+### Common Error Codes:
+- `INVALID_REQUEST`: Request format is invalid
+- `RESOURCE_NOT_FOUND`: Requested resource does not exist
+- `RATE_LIMIT_EXCEEDED`: Too many requests from the same IP
+- `SERVICE_UNAVAILABLE`: Search or other service temporarily unavailable
+
+## Analytics Events (if implemented)
+The system may send analytics events to track content usage:
+
+### Event Format:
+```json
+{
+  "eventType": "content_view|search|click|time_spent",
+  "timestamp": "ISO 8601 datetime",
+  "properties": {
+    "contentId": "string",
+    "module": "string",
+    "chapter": "string",
+    "duration": "number (seconds, for time_spent events)"
+  }
+}
+```
