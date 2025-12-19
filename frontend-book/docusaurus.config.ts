@@ -176,6 +176,27 @@ const config: Config = {
           ],
         },
         {
+          title: 'Connect',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/SadiqKhan-Dev',
+            },
+            {
+              label: 'LinkedIn',
+              href: 'https://www.linkedin.com/in/sadiq-rashid-564375158/',
+            },
+            {
+              label: 'Instagram',
+              href: 'https://www.instagram.com/sadiqkhan_dev/',
+            },
+            {
+              label: 'Twitter/X',
+              href: 'https://x.com/saiqkhan3333',
+            },
+          ],
+        },
+        {
           title: 'More',
           items: [
             {
