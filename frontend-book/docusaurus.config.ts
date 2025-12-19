@@ -72,6 +72,38 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      require.resolve("@cmfcmf/docusaurus-search-local"),
+      {
+        // whether to index docs pages
+        indexDocs: true,
+
+        // Whether to also index the titles of the parent categories in the sidebar of a doc page.
+        // 0 disables this feature.
+        // 1 indexes the direct parent category in the sidebar of a doc page
+        // 2 indexes up to two nested parent categories of a doc page
+        // 3...
+        //
+        // Do _not_ use Infinity, the value must be a JSON-serializable integer.
+        indexDocSidebarParentCategories: 0,
+
+        // whether to index blog pages
+        indexBlog: false,
+
+        // whether to index static pages
+        // /404.html is never indexed
+        indexPages: false,
+
+        // language of your documentation, see next section
+        language: "en",
+
+        // setting this to "none" will prevent the default CSS to be included.
+        // This is unlikely to be useful
+        style: undefined,
+      },
+    ],
+  ],
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
@@ -90,6 +122,10 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Course Modules',
+        },
+        {
+          type: 'search',
+          position: 'right',
         },
         {
           href: 'https://github.com/facebook/docusaurus',

@@ -1,0 +1,117 @@
+# API Contracts: Theme Configuration API
+
+## Overview
+This document specifies the API contract for managing theme configurations in the Docusaurus-based AI/Robotics book. This API enables dynamic theme switching and persistence of user preferences.
+
+## API Endpoints
+
+### GET /api/theme/config
+Retrieves the current theme configuration based on user preferences and system settings.
+
+**Request:**
+```
+GET /api/theme/config
+Headers:
+  Accept: application/json
+```
+
+**Response:**
+- 200 OK: Returns the current theme configuration
+- 404 Not Found: If no configuration exists
+
+**Response Schema:**
+```json
+{
+  "theme": {
+    "id": "light|dark",
+    "name": "string",
+    "primary_color": "hex_color",
+    "secondary_color": "hex_color",
+    "neutral_colors": {
+      "light": "hex_color",
+      "dark": "hex_color"
+    },
+    "font_family": "string",
+    "code_font_family": "string",
+    "is_default": "boolean"
+  }
+}
+```
+
+### POST /api/theme/config
+Updates user's theme preference.
+
+**Request:**
+```
+POST /api/theme/config
+Headers:
+  Content-Type: application/json
+  Accept: application/json
+Body:
+{
+  "theme_id": "light|dark",
+  "persist": "boolean"
+}
+```
+
+**Response:**
+- 200 OK: Successfully updated the theme configuration
+- 400 Bad Request: Invalid theme ID or other validation error
+
+**Response Schema:**
+```json
+{
+  "status": "success|error",
+  "message": "string",
+  "updated_theme": {
+    "id": "string",
+    "name": "string",
+    "last_updated": "ISO 8601 timestamp"
+  }
+}
+```
+
+### GET /api/theme/available
+Retrieves all available themes for the site.
+
+**Request:**
+```
+GET /api/theme/available
+Headers:
+  Accept: application/json
+```
+
+**Response:**
+- 200 OK: Returns a list of available themes
+
+**Response Schema:**
+```json
+{
+  "themes": [
+    {
+      "id": "string",
+      "name": "string",
+      "is_default": "boolean",
+      "preview_url": "string"
+    }
+  ]
+}
+```
+
+## Error Responses
+Standard error response format:
+```json
+{
+  "error": {
+    "code": "string",
+    "message": "string",
+    "details": "optional string"
+  }
+}
+```
+
+## Authentication
+All endpoints are currently public and do not require authentication.
+
+## Versioning
+This API follows the major version of the Docusaurus site. Breaking changes will be documented in release notes.
