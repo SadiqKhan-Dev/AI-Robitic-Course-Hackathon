@@ -1,0 +1,119 @@
+.moduleCardContainer {
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.moduleCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--ifm-color-card-shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.moduleCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ifm-color-card-hover-shadow);
+}
+
+.cardImageContainer {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: color-mix(in srgb, var(--ifm-color-emphasis-100) 70%, transparent);
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.moduleCard:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+
+.placeholderText {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.cardTitle {
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+}
+
+.cardDescription {
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-content);
+  line-height: 1.6;
+}
+
+.cardButton {
+  width: 100%;
+  text-align: center;
+  border-radius: var(--ifm-button-border-radius);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.cardButton:hover {
+  background: var(--ifm-color-primary);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 996px) {
+  .moduleCardContainer {
+    margin-bottom: 1.5rem;
+  }
+  
+  .cardImageContainer {
+    height: 140px;
+  }
+  
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .moduleCardContainer {
+    margin-bottom: 1rem;
+  }
+  
+  .cardImageContainer {
+    height: 120px;
+  }
+  
+  .placeholderImage {
+    font-size: 2rem;
+  }
+  
+  .placeholderText {
+    font-size: 2rem;
+  }
+}
