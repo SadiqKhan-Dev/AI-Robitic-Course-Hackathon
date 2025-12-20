@@ -208,3 +208,6 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Qwen Added Memories
+- Created feature specification for floating RAG-powered AI agent for book content. Branch: 001-book-rag-agent, Spec file: E:\VS-CODES\Prompt-MCP\ai-robotic-book\specs\001-book-rag-agent\spec.md, Checklist: E:\VS-CODES\Prompt-MCP\ai-robotic-book\specs\001-book-rag-agent\checklists\requirements.md

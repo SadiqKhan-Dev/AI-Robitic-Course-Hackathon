@@ -1,0 +1,162 @@
+openapi: 3.0.0
+info:
+  title: Book RAG Agent API
+  description: API for the floating RAG-powered AI agent that answers questions from book content
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Development server
+paths:
+  /health:
+    get:
+      summary: Check API health status
+      responses:
+        '200':
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  timestamp:
+                    type: string
+                    format: date-time
+                    example: "2025-12-20T10:00:00Z"
+  
+  /ingest:
+    post:
+      summary: Trigger content ingestion from sitemap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sitemap_url:
+                  type: string
+                  description: URL of the sitemap to ingest
+                  example: "https://book.example.com/sitemap.xml"
+      responses:
+        '200':
+          description: Ingestion started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Ingestion started"
+                  job_id:
+                    type: string
+                    example: "ingest-job-123"
+        '400':
+          description: Invalid sitemap URL
+        '500':
+          description: Internal server error during ingestion
+  
+  /query:
+    post:
+      summary: Submit a question and get a response from book content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - question
+              properties:
+                question:
+                  type: string
+                  description: The question to ask about the book content
+                  example: "What are the main principles of robotics?"
+                page_context:
+                  type: string
+                  description: Optional URL of the current page for context
+                  example: "https://book.example.com/chapter-3"
+      responses:
+        '200':
+          description: Response to the question
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Invalid question format
+        '500':
+          description: Internal server error during query processing
+  
+  /query/page:
+    post:
+      summary: Submit a question with explicit page-level context
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - question
+                - page_url
+              properties:
+                question:
+                  type: string
+                  description: The question to ask about the book content
+                  example: "Explain the concept mentioned in this section"
+                page_url:
+                  type: string
+                  description: URL of the page to focus the query on
+                  example: "https://book.example.com/chapter-3/section-2"
+
+      responses:
+        '200':
+          description: Response to the question based on specific page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Invalid question or page URL
+        '500':
+          description: Internal server error during query processing
+
+components:
+  schemas:
+    QueryResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the response
+          example: "resp-12345"
+        answer:
+          type: string
+          description: The AI-generated answer based on book content
+          example: "The main principles of robotics are perception, decision-making, and action..."
+        sources:
+          type: array
+          items:
+            type: string
+          description: IDs of content chunks used to generate the answer
+          example: ["chunk-1", "chunk-2"]
+        confidence:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+          description: Confidence score of the response
+          example: 0.85
+        fallback_used:
+          type: boolean
+          description: Whether the "I don't know" fallback was used
+          example: false
+        timestamp:
+          type: string
+          format: date-time
+          description: When the response was generated
+          example: "2025-12-20T10:00:00Z"
