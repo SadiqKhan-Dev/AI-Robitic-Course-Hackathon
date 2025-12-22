@@ -21,7 +21,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-2',
       title: 'Digital Twin Humanoid Robots',
       description: 'Explore creating digital twins for humanoid robots to simulate, test, and validate robot behaviors in a virtual environment.',
-      imageUrl: '/img/modules/digital-twin-humanoid.svg',
+      imageUrl: '/img/modules/Digital-Twin-Humanoid-Robots.png',
       linkUrl: '/docs/module-2-digital-twin-humanoid/',
       color: '#00d2ff'
     },
@@ -37,7 +37,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-4',
       title: 'Vision Language Action (VLA) Humanoid Control',
       description: 'Master VLA models for controlling humanoid robots using vision, language, and action inputs.',
-      imageUrl: '/img/modules/Vision-Language-Action-(VLA)-Humanoid-Control.png',
+      imageUrl: '/img/modules/NVIDIA-Isaac-Robotic-Brain.png',
       linkUrl: '/docs/ai-robotics/vla-pipelines',
       color: '#ff7e5f'
     },
@@ -45,7 +45,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-5',
       title: 'Advanced AI Algorithms',
       description: 'Deep dive into machine learning and AI algorithms specifically designed for robotics applications.',
-      imageUrl: '/img/modules/ai-algorithms.svg',
+      imageUrl: '/img/modules/Advanced-AI-Algorithms.png',
       linkUrl: '/docs/ai-robotics/ai-fundamentals',
       color: '#654ea3'
     },
