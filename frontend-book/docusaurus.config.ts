@@ -48,7 +48,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            '',
+            'https://github.com/SadiqKhan-Dev/AI-Robitic-Course-Hackathon/edit/main/',
         },
         blog: {
           showReadingTime: true,
@@ -59,7 +59,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            '',
+            'https://github.com/SadiqKhan-Dev/AI-Robitic-Course-Hackathon/edit/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -114,7 +114,7 @@ const config: Config = {
       title: 'Physical AI & Robotics',
       logo: {
         alt: 'Robotics Course Logo',
-        src: 'img/logo.svg',
+        src: 'img/gemini-logo.png',
       },
       items: [
         {
@@ -125,10 +125,6 @@ const config: Config = {
         },
         {
           type: 'search',
-          position: 'right',
-        },
-        {
-          type: 'custom-translationNavbar',
           position: 'right',
         },
         {
