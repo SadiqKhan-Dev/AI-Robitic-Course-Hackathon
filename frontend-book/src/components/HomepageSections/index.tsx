@@ -13,7 +13,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-1',
       title: 'ROS 2 Nervous System',
       description: 'Learn how ROS 2 serves as the nervous system for robotic applications, enabling communication between different components.',
-      imageUrl: '/img/modules/ROS-2-Nervous-System.PNG',
+      imageUrl: '/img/modules/ROS-2-Nervous-System.png',
       linkUrl: '/docs/module-1-robotic-nervous-system/intro',
       color: '#3a7bd5'
     },
