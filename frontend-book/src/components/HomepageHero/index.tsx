@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Heading from '@theme/Heading';
-import TranslationButton from '../TranslationButton';
 
 import styles from './styles.module.css';
 
@@ -29,12 +28,9 @@ const HomepageHero: React.FC<HomepageHeroProps> = ({
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <div className={styles.heroHeader}>
-          <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
-            {heroTitle}
-          </Heading>
-          {/* <TranslationButton variant="icon-text" size="medium" position="inline" /> */}
-        </div>
+        <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
+          {heroTitle}
+        </Heading>
         <p className={clsx('hero__subtitle', styles.heroSubtitle)}>
           {heroSubtitle}
         </p>

@@ -15,12 +15,6 @@
     color-mix(in srgb, var(--ifm-background-color) 95%, var(--ifm-color-primary)) 100%);
 }
 
-.heroHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
 
 .heroTitle {
   font-size: var(--ifm-h1-font-size);
