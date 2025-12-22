@@ -48,7 +48,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/SadiqKhan-Dev/AI-Robitic-Course-Hackathon/edit/main/',
         },
         blog: {
           showReadingTime: true,
@@ -59,7 +59,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/SadiqKhan-Dev/AI-Robitic-Course-Hackathon/edit/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -114,7 +114,7 @@ const config: Config = {
       title: 'Physical AI & Robotics',
       logo: {
         alt: 'Robotics Course Logo',
-        src: 'img/logo.svg',
+        src: 'img/gemini-logo.png',
       },
       items: [
         {
@@ -128,7 +128,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/sadiqkhan-dev',
           label: 'GitHub',
           position: 'right',
         },

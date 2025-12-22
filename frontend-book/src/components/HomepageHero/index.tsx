@@ -20,7 +20,7 @@ const HomepageHero: React.FC<HomepageHeroProps> = ({
   ctaUrl = '/docs/intro'
 }) => {
   const {siteConfig} = useDocusaurusContext();
-  
+
   // Use defaults if props are not provided
   const heroTitle = title || siteConfig.title || 'Physical AI & Humanoid Robotics';
   const heroSubtitle = subtitle || siteConfig.tagline || 'Embodied Intelligence in the Physical World';

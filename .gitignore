@@ -8,6 +8,46 @@
 .docusaurus
 .cache-loader
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git/modules/
+.pytest_cache/
+.hypothesis/
+.DS_Store
+.venv
+venv/
+ENV/
+env/
+__pycache__/
+*.pyc
+*$py.class
+.pytest_cache/
+.coverage
+.coverage.*
+.pytest_cache/
+.hypothesis/
+
+# Environment
+.env*
+!.env.example
+
 # Misc
 .DS_Store
 .env.local
