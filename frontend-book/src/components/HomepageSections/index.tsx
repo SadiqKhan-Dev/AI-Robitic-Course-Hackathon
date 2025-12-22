@@ -13,7 +13,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-1',
       title: 'ROS 2 Nervous System',
       description: 'Learn how ROS 2 serves as the nervous system for robotic applications, enabling communication between different components.',
-      imageUrl: '/img/modules/ros2-nervous-system.svg',
+      imageUrl: '/img/modules/ROS-2-Nervous-System.PNG',
       linkUrl: '/docs/module-1-robotic-nervous-system/intro',
       color: '#3a7bd5'
     },
@@ -21,7 +21,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-2',
       title: 'Digital Twin Humanoid Robots',
       description: 'Explore creating digital twins for humanoid robots to simulate, test, and validate robot behaviors in a virtual environment.',
-      imageUrl: '/img/modules/digital-twin-humanoid.svg',
+      imageUrl: '/img/modules/Digital-Twin-Humanoid-Robots.png',
       linkUrl: '/docs/module-2-digital-twin-humanoid/',
       color: '#00d2ff'
     },
@@ -29,7 +29,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-3',
       title: 'NVIDIA Isaac Robotic Brain',
       description: 'Implement AI capabilities for robots using NVIDIA Isaac, including perception, planning, and control systems.',
-      imageUrl: '/img/modules/isaac-brain.svg',
+      imageUrl: '/img/modules/NVIDIA-Isaac-Robotic-Brain.png',
       linkUrl: '/docs/module-3-nvidia-isaac-brain/',
       color: '#f85032'
     },
@@ -37,7 +37,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-4',
       title: 'Vision Language Action (VLA) Humanoid Control',
       description: 'Master VLA models for controlling humanoid robots using vision, language, and action inputs.',
-      imageUrl: '/img/modules/vla-control.svg',
+      imageUrl: '/img/modules/NVIDIA-Isaac-Robotic-Brain.png',
       linkUrl: '/docs/ai-robotics/vla-pipelines',
       color: '#ff7e5f'
     },
@@ -45,7 +45,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-5',
       title: 'Advanced AI Algorithms',
       description: 'Deep dive into machine learning and AI algorithms specifically designed for robotics applications.',
-      imageUrl: '/img/modules/ai-algorithms.svg',
+      imageUrl: '/img/modules/Advanced-AI-Algorithms.png',
       linkUrl: '/docs/ai-robotics/ai-fundamentals',
       color: '#654ea3'
     },
@@ -53,7 +53,7 @@ const HomepageSections: React.FC<HomepageSectionsProps> = () => {
       id: 'module-6',
       title: 'Robot Ethics & Safety',
       description: 'Understand the ethical considerations and safety protocols for developing and deploying robotic systems.',
-      imageUrl: '/img/modules/robot-ethics.svg',
+      imageUrl: '/img/modules/Robot-Ethics-&-Safety.png',
       linkUrl: '/docs/robotics/ethics-safety',
       color: '#141e30'
     }
