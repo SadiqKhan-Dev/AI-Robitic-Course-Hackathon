@@ -1,114 +1,55 @@
-<!-- SYNC IMPACT REPORT:
-Version change: N/A (creating initial version) -> 1.0.0
-Modified principles: N/A
-Added sections: All principles and sections are newly added
-Removed sections: N/A
-Templates requiring updates: ⚠ pending review - .specify/templates/plan-template.md, .specify/templates/spec-template.md, .specify/templates/tasks-template.md
-Follow-up TODOs: RATIFICATION_DATE needs to be updated to actual date
--->
-# Unified AI-Spec Driven Book with Integrated RAG Chatbot Constitution
+# [PROJECT_NAME] Constitution
+<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
 
 ## Core Principles
 
-### Specification-First Authoring
-All book content, structure, and behavior must originate from formal specs (Spec-Kit Plus).
+### [PRINCIPLE_1_NAME]
+<!-- Example: I. Library-First -->
+[PRINCIPLE_1_DESCRIPTION]
+<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
 
-### Source-Grounded Accuracy
-All explanations must be derived from the authored book content; no hallucinated or external knowledge in the chatbot.
+### [PRINCIPLE_2_NAME]
+<!-- Example: II. CLI Interface -->
+[PRINCIPLE_2_DESCRIPTION]
+<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
 
-### Clarity for Technical Learners
-Content must be understandable for beginner to intermediate developers with a computer science or web background.
+### [PRINCIPLE_3_NAME]
+<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
+[PRINCIPLE_3_DESCRIPTION]
+<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
 
-### Reproducibility
-Every step (authoring, deployment, indexing, chatbot behavior) must be fully reproducible from the repository.
+### [PRINCIPLE_4_NAME]
+<!-- Example: IV. Integration Testing -->
+[PRINCIPLE_4_DESCRIPTION]
+<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
 
-### AI-Native Workflow Integrity
-Claude Code must be used as the primary authoring agent, guided strictly by the constitution.
+### [PRINCIPLE_5_NAME]
+<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
+[PRINCIPLE_5_DESCRIPTION]
+<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
 
-### Free-Tier Infrastructure Compatibility
-Deployment must require no proprietary or paid services beyond free tiers (Qdrant Free, Neon Serverless).
+### [PRINCIPLE_6_NAME]
 
-## Key Standards
 
-### Authoring Stack:
-- Documentation: Docusaurus
-- Specification System: Spec-Kit Plus
-- AI Authoring Tool: Claude Code
+[PRINCIPLE__DESCRIPTION]
 
-### Publishing:
-- Hosting: GitHub Pages
-- Version control: GitHub (public repository)
+## [SECTION_2_NAME]
+<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
 
-### RAG Chatbot Stack:
-- Agent Framework: OpenAI Agents / ChatKit SDKs
-- Backend API: FastAPI
-- Vector Database: Qdrant Cloud (Free Tier)
-- Relational Database: Neon Serverless Postgres
+[SECTION_2_CONTENT]
+<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
 
-### Chatbot Behavior Rules:
-- Answers must be derived only from indexed book content
-- Must support question-answering based on user-selected text only
-- Must explicitly refuse questions outside the book's scope
-- Responses must be concise, technical, and citation-aware
+## [SECTION_3_NAME]
+<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
 
-### Content Standards
-- Writing level: Beginner to Intermediate
-- Tone: Professional, instructional, and precise
-- Structure:
-  - Clear chapters and sections
-  - Progressive difficulty
-  - Practical examples and explanations
-  - No filler content or speculative claims
-
-## Development Workflow
-
-### Constraints
-- The book must be fully generated and structured via Spec-Kit Plus specs
-- Claude Code must follow specs without improvising architecture
-- RAG chatbot must not access external APIs for knowledge retrieval
-- Free-tier compatible infrastructure only (Qdrant Free, Neon Serverless)
-- Deployment must require no proprietary or paid services beyond free tiers
-
-### Verification & Quality Controls
-- All chatbot answers must be verifiable against stored embeddings
-- Manual and automated checks to ensure no hallucinated responses
-- Book build must succeed via a clean repository clone and install
-- Clear README with setup, deployment, and usage instructions
-
-### Deliverables
-- Docusaurus Book Repository
-  - Spec-Kit Plus specifications
-  - AI-generated content via Claude Code
-  - Clean, structured documentation
-- Published Documentation Site
-  - Deployed on GitHub Pages
-  - Publicly accessible
-- Integrated RAG Chatbot
-  - Embedded UI within the documentation site
-  - FastAPI backend with vector search
-  - Qdrant-indexed book content
-  - Neon-backed metadata and session storage
-
-### Technical Documentation
-- Architecture overview
-- RAG data flow explanation
-- Setup and deployment guide
-
-### Success Criteria
-- Book is fully spec-driven and AI-authored
-- GitHub Pages site builds and deploys successfully
-- RAG chatbot answers accurately using only book content
-- Selected-text question answering works reliably
-- No hallucinated or out-of-scope responses
-- Repository can be cloned, built, and deployed without errors
-
-### Non-Goals
-- No general-purpose chatbot behavior
-- No reliance on external knowledge bases
-- No manual content writing outside Claude Code execution
+[SECTION_3_CONTENT]
+<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
 
 ## Governance
+<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-Constitution is binding and must be followed strictly when generating, modifying, or extending any part of the project. All decisions and implementations must align with the specified principles, standards, and requirements. Includes versioning policy and compliance review expectations.
+[GOVERNANCE_RULES]
+<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
 
-**Version**: 1.0.0 | **Ratified**: 2025-01-01 | **Last Amended**: 2025-12-17
+**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
+<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->

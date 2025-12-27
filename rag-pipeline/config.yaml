@@ -1,0 +1,82 @@
+# RAG Agent Configuration
+# All settings managed here - no hardcoding
+
+# Qdrant Vector Database (Free Cloud)
+qdrant:
+  url: "https://6fbb5736-784b-4919-ad19-bd34f03c6923.europe-west3-0.gcp.cloud.qdrant.io:6333"
+  api_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.kqg1h_EdnqwEX1ARtKbnbPKc7ql6-9oIEZFgq9LDEcY"
+  collection_name: "humanoid_ai_book"
+  vector_size: 384  # all-MiniLM-L6-v2 embedding size
+
+# Gemini AI (Free Tier)
+gemini:
+  api_key: "YOUR_GEMINI_API_KEY_HERE"
+  model: "gemini-1.5-flash"  # Free tier - 15 RPM, 1M tokens/day
+  embedding_model: "text-embedding-004"
+  temperature: 0.3
+  max_output_tokens: 2048
+
+# RAG Settings
+rag:
+  top_k: 5
+  similarity_threshold: 0.5
+  context_window: 4000
+
+# ========================================
+# EMBEDDING PROVIDERS (Choose One)
+# ========================================
+
+# 1. Sentence Transformers (RECOMMENDED - FREE)
+embedding:
+  provider: "sentence-transformers"
+  model: "all-MiniLM-L6-v2"  # Free, fast, 384 dimensions
+
+# 2. Cohere (Requires API Key)
+# Get free API key: https://cohere.com/
+cohere:
+  api_key: "YOUR_COHERE_API_KEY_HERE"
+  model: "embed-english-v3.0"  # 1024 dimensions
+  dimension: 1024
+
+# 3. HuggingFace Inference (Free Tier Available)
+# Get free API key: https://huggingface.co/settings/tokens
+huggingface:
+  api_key: "YOUR_HUGGINGFACE_API_KEY_HERE"
+  model: "sentence-transformers/all-MiniLM-L6-v2"  # 384 dimensions
+  dimension: 384
+
+# 4. OpenAI (Paid but high quality)
+# Get API key: https://platform.openai.com/api-keys
+openai:
+  api_key: "YOUR_OPENAI_API_KEY_HERE"
+  model: "text-embedding-3-small"  # 1536 dimensions
+  dimension: 1536
+
+# Streamlit UI
+ui:
+  title: "AI Robotics Book Assistant"
+  subtitle: "Ask questions about the Humanoid AI Book"
+  theme: "dark"
+
+# ========================================
+# USAGE INSTRUCTIONS
+# ========================================
+# For Qdrant + SentenceTransformers (FREE):
+#   - Uses local embeddings (no API calls)
+#   - Qdrant cloud is already configured
+#   - Best for: Free, offline use
+#
+# For Cohere + Qdrant:
+#   - Set provider to "cohere"
+#   - Requires Cohere API key
+#   - Best for: Production quality
+#
+# For HuggingFace + Qdrant:
+#   - Set provider to "huggingface"
+#   - Requires HuggingFace token
+#   - Best for: Open source stack
+#
+# For OpenAI + Qdrant:
+#   - Set provider to "openai"
+#   - Requires OpenAI API key
+#   - Best for: Enterprise use

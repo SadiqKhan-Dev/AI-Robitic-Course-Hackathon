@@ -1,0 +1,131 @@
+# Configuration Schema Contract
+
+# Pipeline Configuration
+# This file defines the configuration schema for the RAG pipeline
+# All settings can be overridden via environment variables or .env file
+
+pipeline:
+  # Docusaurus Site Configuration
+  site:
+    url: "https://ai-robitic-course-hackathon.vercel.app/"  # Base URL of Docusaurus site
+    sitemap_url: ""  # Auto-computed: {url}/sitemap.xml
+    user_agent: "RAG-Pipeline/1.0"  # User agent for requests
+    request_timeout: 30  # Request timeout in seconds
+    max_retries: 3  # Max retry attempts for failed requests
+
+  # Cohere API Configuration
+  cohere:
+    api_key: ""  # Required: Set via COHERE_API_KEY env var
+    model: "embed-english-v3.0"  # Embedding model
+    batch_size: 96  # Max texts per API request
+    max_rpm: 100  # Max requests per minute (rate limit)
+    input_type: "search_document"  # Input type for embeddings
+    truncate: "END"  # How to handle long texts (END, START, NONE)
+
+  # Qdrant Configuration
+  qdrant:
+    url: ""  # Required: Set via QDRANT_URL env var
+    api_key: ""  # Required: Set via QDRANT_API_KEY env var
+    collection_name: "docs-embeddings"  # Collection name
+    vector_size: 1024  # Embedding dimensions (must match Cohere model)
+    distance_metric: "Cosine"  # Distance metric (Cosine, Euclid, Dot)
+    on_disk: false  # Store vectors on disk (for large collections)
+    replication_factor: 1  # Number of replicas (cloud tier dependent)
+
+  # Text Chunking Configuration
+  chunking:
+    chunk_size: 512  # Target chunk size in tokens
+    chunk_overlap: 50  # Overlap between chunks in tokens
+    min_chunk_size: 50  # Minimum chunk size (discard smaller)
+    max_chunk_size: 600  # Maximum chunk size (hard limit)
+    separators:  # Hierarchy of separators for splitting
+      - "\n\n"  # Paragraphs
+      - "\n"    # Lines
+      - ". "    # Sentences
+      - " "     # Words
+      - ""      # Characters
+    keep_separator: true  # Keep separators in chunks
+
+  # Crawling Configuration
+  crawling:
+    max_concurrent_requests: 5  # Max parallel requests
+    request_delay: 0.5  # Delay between requests (seconds)
+    max_pages: null  # Limit number of pages (null = no limit)
+    include_patterns:  # URL patterns to include (regex)
+      - "^https://ai-robitic-course-hackathon\\.vercel\\.app/docs/.*"
+      - "^https://ai-robitic-course-hackathon\\.vercel\\.app/blog/.*"
+    exclude_patterns:  # URL patterns to exclude (regex)
+      - ".*/404$"
+      - ".*/search$"
+      - ".*#.*"  # Skip anchor links
+    respect_robots_txt: true  # Honor robots.txt
+    cache_html: false  # Cache raw HTML (for debugging)
+
+  # Storage Configuration
+  storage:
+    data_dir: "./data"  # Base data directory
+    cache_dir: "./data/cache/extracted"  # Extracted text cache
+    state_dir: "./data/state"  # State files for resumability
+    log_dir: "./data/logs"  # Log files
+    embeddings_file: "./data/embeddings.jsonl"  # Embeddings output
+
+  # Concurrency Configuration
+  concurrency:
+    max_workers: 5  # Max async workers
+    semaphore_limit: 5  # Concurrent operations limit
+    batch_processing: true  # Enable batch processing
+
+  # Retry Configuration
+  retry:
+    max_attempts: 5  # Max retry attempts
+    base_delay: 1.0  # Base delay in seconds
+    max_delay: 60.0  # Max delay in seconds
+    exponential_base: 2  # Exponential backoff base
+    jitter: true  # Add random jitter to delays
+
+  # Logging Configuration
+  logging:
+    level: "INFO"  # Log level (DEBUG, INFO, WARNING, ERROR)
+    format: "json"  # Log format (json, text)
+    rotation: "daily"  # Log rotation (daily, size)
+    max_bytes: 10485760  # Max log file size (10MB)
+    backup_count: 7  # Number of backup log files
+    structured: true  # Use structured logging
+
+  # Validation Configuration
+  validation:
+    validate_embeddings: true  # Validate embedding dimensions
+    validate_uploads: true  # Validate vector uploads
+    test_queries:  # Test queries for validation
+      - "What is ROS 2?"
+      - "How to use NVIDIA Isaac?"
+      - "Vision Language Action models"
+    min_similarity_score: 0.7  # Min similarity for test queries
+
+# Environment Variable Mapping
+# These environment variables override config values
+env_mapping:
+  COHERE_API_KEY: "pipeline.cohere.api_key"
+  QDRANT_URL: "pipeline.qdrant.url"
+  QDRANT_API_KEY: "pipeline.qdrant.api_key"
+  DOCUSAURUS_URL: "pipeline.site.url"
+  QDRANT_COLLECTION: "pipeline.qdrant.collection_name"
+  CHUNK_SIZE: "pipeline.chunking.chunk_size"
+  CHUNK_OVERLAP: "pipeline.chunking.chunk_overlap"
+  MAX_RPM: "pipeline.cohere.max_rpm"
+  LOG_LEVEL: "pipeline.logging.level"
+
+# Required Environment Variables (must be set)
+required_env_vars:
+  - COHERE_API_KEY
+  - QDRANT_URL
+  - QDRANT_API_KEY
+
+# Optional Environment Variables (have defaults)
+optional_env_vars:
+  - DOCUSAURUS_URL
+  - QDRANT_COLLECTION
+  - CHUNK_SIZE
+  - CHUNK_OVERLAP
+  - MAX_RPM
+  - LOG_LEVEL

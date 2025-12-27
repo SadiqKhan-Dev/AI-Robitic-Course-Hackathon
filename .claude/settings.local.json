@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -ExecutionPolicy Bypass -File \".specify/scripts/powershell/setup-plan.ps1\" -Json)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \".specify/scripts/powershell/update-agent-context.ps1\" -AgentType claude)",
+      "Bash(bash:*)",
+      "Bash(git config:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json)",
+      "Bash(powershell -ExecutionPolicy Bypass -Command:*)",
+      "Bash(.venvScriptsactivate)",
+      "Bash(python -m src.cli.pipeline:*)",
+      "Bash(python -m rag_pipeline.src.cli.pipeline:*)",
+      "Bash(pip install:*)",
+      "WebFetch(domain:ai-robitic-course-hackathon.vercel.app)",
+      "Bash(powershell -Command \"$content = Get-Content ''E:/VS-CODES/Prompt-MCP/AI-Robitic-Course-Hackathon/rag-pipeline/src/services/crawler.py'' -Raw; $content = $content -replace ''from \\\\.\\\\.config import PipelineConfig'', ''from ..config import PipelineConfig\\\\n\\\\n\\\\ndef _strip_namespaces\\(tree\\):\\\\n    \"\"\"\"\"\"Remove namespace prefixes from all elements in an XML tree.\"\"\"\"\"\"\\\\n    for elem in tree.getiterator\\(\\):\\\\n        if elem.tag.startswith\\(\"\"{\"\"\\):\\\\n            elem.tag = elem.tag.split\\(\"\"}\"\", 1\\)[1]\\\\n\\\\n''; $content = $content -replace ''tree = etree\\\\.fromstring\\\\\\(sitemap_xml\\\\.encode\\\\\\(\\\\\\), parser\\\\\\)'', ''tree = etree.fromstring\\(sitemap_xml.encode\\(\\), parser\\)\\\\n            _strip_namespaces\\(tree\\)''; Set-Content -Path ''E:/VS-CODES/Prompt-MCP/AI-Robitic-Course-Hackathon/rag-pipeline/src/services/crawler.py'' -Value $content\")",
+      "Bash(python -c \"\nimport re\n\nwith open\\(''E:/VS-CODES/Prompt-MCP/AI-Robitic-Course-Hackathon/rag-pipeline/src/services/crawler.py'', ''r''\\) as f:\n    content = f.read\\(\\)\n\n# Add helper function after the logger line\nhelper = ''''''\n\ndef _strip_namespaces\\(tree\\):\n    \"\"\"\"\"\"Remove namespace prefixes from all elements in an XML tree.\"\"\"\"\"\"\n    for elem in tree.getiterator\\(\\):\n        if elem.tag.startswith\\(\"\"{\"\"\\):\n            elem.tag = elem.tag.split\\(\"\"}\"\", 1\\)[1]\n\n''''''\ncontent = content.replace\\(''logger = structlog.get_logger\\(__name__\\)\\\\n\\\\n\\\\nclass CrawlState\\(BaseModel\\):'', \n                          ''logger = structlog.get_logger\\(__name__\\)'' + helper + ''\\\\nclass CrawlState\\(BaseModel\\):''\\)\n\n# Add _strip_namespaces\\(tree\\) after each tree parsing\ncontent = content.replace\\(''tree = etree.fromstring\\(sitemap_xml.encode\\(\\), parser\\)\\\\n\\\\n            urls = []'', \n                          ''tree = etree.fromstring\\(sitemap_xml.encode\\(\\), parser\\)\\\\n            _strip_namespaces\\(tree\\)\\\\n\\\\n            urls = []''\\)\n\nwith open\\(''E:/VS-CODES/Prompt-MCP/AI-Robitic-Course-Hackathon/rag-pipeline/src/services/crawler.py'', ''w''\\) as f:\n    f.write\\(content\\)\n\nprint\\(''Done''\\)\n\")",
+      "Bash(python:*)",
+      "Bash(pip show:*)",
+      "Bash(findstr:*)",
+      "Bash(mkdir -p rag-pipeline/src/services rag-pipeline/src/agents rag-pipeline/src/ui rag-pipeline)",
+      "Bash(streamlit run:*)"
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "id": 0,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/ai-robotics/vla-pipelines",
+    "title": "Voice to Action Pipelines",
+    "text_preview": "Overview\n​\nThe Vision Language Action (VLA) pipeline represents a unified approach to robotics where"
+  },
+  {
+    "id": 1,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/ai-robotics/vla-pipelines",
+    "title": "Voice to Action Pipelines",
+    "text_preview": "ech is converted to text, the system must interpret the intent behind the user's words. This involve"
+  },
+  {
+    "id": 2,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/ai-robotics/vla-pipelines",
+    "title": "Voice to Action Pipelines",
+    "text_preview": "apping\nAction Parameters\n: \"Move carefully\" requires speed parameters\nIntegration with ROS 2\n​\nThe R"
+  },
+  {
+    "id": 3,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/ai-robotics/vla-pipelines",
+    "title": "Voice to Action Pipelines",
+    "text_preview": "→ [ROS 2 Action Execution]\nEach component in the pipeline is designed to be modular and replaceable,"
+  },
+  {
+    "id": 4,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/ai-robotics/autonomous-humanoid-capstone",
+    "title": "Capstone: The Autonomous Humanoid",
+    "text_preview": "Overview\n​\nIn this capstone project, we integrate all components of the Vision Language Action (VLA)"
+  },
+  {
+    "id": 5,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/ai-robotics/autonomous-humanoid-capstone",
+    "title": "Capstone: The Autonomous Humanoid",
+    "text_preview": "to me in the living room\"\nPlanning Breakdown:\n1. [Navigation] Go to kitchen\n2. [Perception] Locate w"
+  },
+  {
+    "id": 6,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/docs/intro",
+    "title": "Tutorial Intro",
+    "text_preview": "Let's discover\nDocusaurus in less than 5 minutes\n.\nGetting Started\n​\nGet started by\ncreating a new s"
+  },
+  {
+    "id": 7,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/docs/tutorial-basics/deploy-your-site",
+    "title": "Deploy your site",
+    "text_preview": "Docusaurus is a\nstatic-site-generator\n(also called\nJamstack\n).\nIt builds your site as simple\nstatic "
+  },
+  {
+    "id": 8,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/docs/tutorial-basics/create-a-page",
+    "title": "Create a Page",
+    "text_preview": "Add\nMarkdown or React\nfiles to\nsrc/pages\nto create a\nstandalone page\n:\nsrc/pages/index.js\n→\nlocalhos"
+  },
+  {
+    "id": 9,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/docs/tutorial-basics/create-a-document",
+    "title": "Create a Document",
+    "text_preview": "Documents are\ngroups of pages\nconnected through:\na\nsidebar\nprevious/next navigation\nversioning\nCreat"
+  },
+  {
+    "id": 10,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/docs/tutorial-basics/markdown-features",
+    "title": "Markdown Features",
+    "text_preview": "Docusaurus supports\nMarkdown\nand a few\nadditional features\n.\nFront Matter\n​\nMarkdown documents have "
+  },
+  {
+    "id": 11,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/docs/tutorial-basics/congratulations",
+    "title": "Congratulations!",
+    "text_preview": "You have just learned the\nbasics of Docusaurus\nand made some changes to the\ninitial template\n.\nDocus"
+  },
+  {
+    "id": 12,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/docs/tutorial-basics/create-a-blog-post",
+    "title": "Create a Blog Post",
+    "text_preview": "Docusaurus creates a\npage for each blog post\n, but also a\nblog index page\n, a\ntag system\n, an\nRSS\nfe"
+  },
+  {
+    "id": 13,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/ai-robotics/cognitive-planning",
+    "title": "Cognitive Planning with LLMs",
+    "text_preview": "Introduction to LLM-Powered Robot Planning\n​\nLarge Language Models (LLMs) have emerged as powerful t"
+  },
+  {
+    "id": 14,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/ai-robotics/cognitive-planning",
+    "title": "Cognitive Planning with LLMs",
+    "text_preview": "ve Planning\n: Adjusting plans based on execution feedback\nLLM Integration with ROS 2\n​\nThe integrati"
+  },
+  {
+    "id": 15,
+    "url": "https://ai-robitic-course-hackathon.vercel.app/docs/ai-robotics/cognitive-planning",
+    "title": "Cognitive Planning with LLMs",
+    "text_preview": "Environmental Constraints\n: Blocked paths, fragile objects, restricted areas\nTemporal Constraints\n: "
+  }
+]
